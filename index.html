@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const personalProfile = {
+            firstName: 'Shahin',
+            lastName: 'Babayev',
+            age: 30,
+            favoriteLanguage: 'C#',
+            contactInfo: {
+                email: 'shahinbabayev98@gmail.com',
+                phone: '012-345-67-89'
+            }
+        };
+        personalProfile['occupation'] = 'Developer';
+        personalProfile.contactInfo['address'] = 'Test';
+        console.log(personalProfile);
+        console.log(personalProfile.firstName);
+        console.log(personalProfile['lastName']);
+        console.log(personalProfile.age);
+        console.log(personalProfile['favoriteLanguage']);
+        console.log(personalProfile.contactInfo.email);
+        console.log(personalProfile['contactInfo']['phone']);
+        console.log(personalProfile.occupation);
+        console.log(personalProfile['contactInfo'].address);
+
+    </script>
+</body>
+
+</html>
