@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //Part 1
+
+        const scores = [11, 22, 33, 44, 55];
+        const [firstScore, secondScore] = scores;
+        console.log(firstScore);
+        console.log(secondScore);
+
+        const student = {
+            name: 'Shahin Babayev',
+            age: 25,
+            isEnrolled: true
+        };
+
+        const { name, age } = student;
+        console.log(name);
+        console.log(age);
+
+        //Part 2
+        console.log(typeof scores);
+        console.log(typeof firstScore);
+        console.log(typeof secondScore);
+        console.log(typeof student);
+        console.log(typeof name);
+        console.log(typeof age);
+        console.log(typeof scores.length);
+
+
+        //Part 3
+
+        console.log(firstScore + secondScore)
+        console.log(firstScore - secondScore)
+
+
+        if (firstScore > secondScore) {
+            console.log("firstScore > secondScore");
+        }
+        else if (firstScore < secondScore){
+            console.log("firstScore < secondScore");
+        }
+        
+
+        if (firstScore > 10 || secondScore > 0 && age > 5) {
+          console.log(true)  
+        }
+
+        console.log(!student.isEnrolled);
+
+               
+    </script>
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>
