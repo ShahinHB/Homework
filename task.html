@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Part 1
+        function calculateSum(numbersArray) {
+            let sum = 0;
+            for (let i = 0; i < numbersArray.length; i++) {
+                sum += numbersArray[i];
+            }
+            return sum;
+        }
+
+        const numbersArray = [13, 19, 53, 46, 56];
+        console.log(calculateSum(numbersArray))
+
+
+        //Part 2
+        let counter = 0;
+
+        while (counter < 5) {
+            console.log(counter);
+            counter++;
+        }
+
+
+        //Part 3
+        let countDown = 5;
+
+        do {
+            console.log(countDown);
+            countDown--;
+        } while (countDown > 0);
+
+
+
+        //Part 4
+        function evaluateGrade(grade) {
+            if (grade >= 60) {
+                return "Pass";
+            } else {
+                return "Fail";
+            }
+        }
+
+        console.log(evaluateGrade(88));
+        console.log(evaluateGrade(33));
+        console.log(evaluateGrade(30));
+        console.log(evaluateGrade(52));
+        console.log(evaluateGrade(93)); 
+    </script>
+</body>
+
+</html>
