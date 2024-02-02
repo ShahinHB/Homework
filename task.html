@@ -8,53 +8,78 @@
 </head>
 
 <body>
+
+
+
     <script>
         //Part 1
-        function calculateSum(numbersArray) {
-            let sum = 0;
-            for (let i = 0; i < numbersArray.length; i++) {
-                sum += numbersArray[i];
-            }
-            return sum;
+        const greet = (name, greeting = "Hello") => {
+            return greeting + " " + name
         }
 
-        const numbersArray = [13, 19, 53, 46, 56];
-        console.log(calculateSum(numbersArray))
-
+        console.log(greet("Shahin"))
 
         //Part 2
-        let counter = 0;
-
-        while (counter < 5) {
-            console.log(counter);
-            counter++;
+        let result = 0
+        const calcFactorial = (number, x = 1) => {
+            if (x == 1) {
+                result = number
+            }
+            x++
+            number--
+            result = result * number
+            if (number > 1) {
+                return calcFactorial(number, x)
+            }
+            else {
+                return result;
+            }
         }
+
+        console.log(calcFactorial(4));
 
 
         //Part 3
-        let countDown = 5;
+        const sumAll = (...numbers) => {
+            let sum = 0;
+            for (let number of numbers) {
+                sum += number;
+            }
+            return sum;
+        };
 
-        do {
-            console.log(countDown);
-            countDown--;
-        } while (countDown > 0);
-
+        console.log(sumAll(1, 2, 3, 4));
 
 
         //Part 4
-        function evaluateGrade(grade) {
-            if (grade >= 60) {
-                return "Pass";
-            } else {
-                return "Fail";
-            }
-        }
 
-        console.log(evaluateGrade(88));
-        console.log(evaluateGrade(33));
-        console.log(evaluateGrade(30));
-        console.log(evaluateGrade(52));
-        console.log(evaluateGrade(93)); 
+
+        const fourth = () => {
+            console.log('Start');
+            console.log('End');
+        };
+
+        const third = () => {
+            console.log('Start');
+            fourth();
+            console.log('End');
+        };
+
+        const second = () => {
+            console.log('Start');
+            third();
+            console.log('End');
+        };
+
+        const first = () => {
+            console.log('Start');
+            second();
+            console.log('End');
+        };
+
+        first(); // This initiates the chain of calls
+
+
     </script>
 </body>
 
