@@ -2,88 +2,85 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
 <body>
 
 
 
-    <script>
-        
-        //Part 1
-        const stocks = [
-  { symbol: 'Test1', price: 1, sector: 'Test1' },
-  { symbol: 'Test2', price: 2, sector: 'Test2' },
-  { symbol: 'Test3', price: 3, sector: 'Test3' }
-];
+  <script>
 
-//Part 2
-function simulateStockUpdates(stocks) {
-  setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * stocks.length);
-    const stock = stocks[randomIndex];
+    //Part 1
+    const stocks = [
+      { symbol: 'Test1', price: 1, sector: 'Test1' },
+      { symbol: 'Test2', price: 2, sector: 'Test2' },
+      { symbol: 'Test3', price: 3, sector: 'Test3' }
+    ];
 
-    const maxPercentage = 4;
-    const randomPercentage = (Math.random() * maxPercentage) - maxPercentage;
+    //Part 2
+    function updateStock(stocks) {
+      setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * stocks.length);
+        const stock = stocks[randomIndex];
 
-    const changeAmount = stock.price * (randomPercentage / 100);
-    stock.price += changeAmount;
+        const maxPercentage = 4;
+        const randomPercentage = (Math.random() * maxPercentage) - maxPercentage;
 
-    stock.price = Math.max(0, stock.price);
-    console.log(stock.price);
-  }, 1000); 
-}
+        const changeAmount = stock.price * (randomPercentage / 100);
+        stock.price += changeAmount;
 
-simulateStockUpdates(stocks);
+        stock.price = Math.max(0, stock.price);
+        console.log(stock.price);
+      }, 1000);
+    }
 
-
-//Part 3
-function filterBySector(stocks, sector) {
-  const filteredStocks = stocks.filter(s => s.sector === sector);
-
-  console.log(sector);
-  filteredStocks.forEach(stock => {
-    console.log(stock.symbol);
-    console.log(stock.price);
-  });
-
-  return filteredStocks;
-}
-
-filterBySector(stocks, 'Test3'); // This will log all stocks in the 'Technology' sector
+    updateStock(stocks);
 
 
-function alertSystem(stocks) {
-  const upperLimit = 300.00; // Set the upper price limit
-const lowerLimit = 100.00;
-  function checkPrices() {
-    stocks.forEach(stock => {
-      if (stock.price > upperLimit) {
+    //Part 3
+    function filterBySector(stocks, sector) {
+      const filteredStocks = stocks.filter(s => s.sector === sector);
+
+      console.log(sector);
+      filteredStocks.forEach(stock => {
         console.log(stock.symbol);
-    console.log(stock.price);
-      } else if (stock.price < lowerLimit) {
-        console.log(stock.symbol);
-    console.log(stock.price);
+        console.log(stock.price);
+      });
+
+      return filteredStocks;
+    }
+
+    filterBySector(stocks, 'Test3');
+
+    //Part 4
+    function alert(stocks) {
+      const upperLimit = 300;
+      const lowerLimit = 100;
+
+      function checkPrices() {
+        stocks.forEach(stock => {
+          if (stock.price > upperLimit) {
+            console.log(stock.symbol);
+            console.log(stock.price);
+          } else if (stock.price < lowerLimit) {
+            console.log(stock.symbol);
+            console.log(stock.price);
+          }
+        });
+
+        setTimeout(checkPrices, 1000);
       }
-    });
 
-    // Schedule the next check
-    setTimeout(checkPrices, 3000); // check every 3000 milliseconds (3 seconds)
-  }
+      checkPrices();
+    }
 
-  // Initial call to start the process
-  checkPrices();
-}
+    alert(stocks);
 
-// Example usage:
- // Set the lower price limit
-// Assuming `stocks` is an array of stock objects as created earlier
-alertSystem(stocks);
 
-    </script>
+  </script>
 </body>
 
 </html>
