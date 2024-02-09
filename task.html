@@ -12,73 +12,76 @@
 
 
     <script>
+        
         //Part 1
-        const greet = (name, greeting = "Hello") => {
-            return greeting + " " + name
-        }
+        const stocks = [
+  { symbol: 'Test1', price: 1, sector: 'Test1' },
+  { symbol: 'Test2', price: 2, sector: 'Test2' },
+  { symbol: 'Test3', price: 3, sector: 'Test3' }
+];
 
-        console.log(greet("Shahin"))
+//Part 2
+function simulateStockUpdates(stocks) {
+  setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * stocks.length);
+    const stock = stocks[randomIndex];
 
-        //Part 2
-        let result = 0
-        const calcFactorial = (number, x = 1) => {
-            if (x == 1) {
-                result = number
-            }
-            x++
-            number--
-            result = result * number
-            if (number > 1) {
-                return calcFactorial(number, x)
-            }
-            else {
-                return result;
-            }
-        }
+    const maxPercentage = 4;
+    const randomPercentage = (Math.random() * maxPercentage) - maxPercentage;
 
-        console.log(calcFactorial(4));
+    const changeAmount = stock.price * (randomPercentage / 100);
+    stock.price += changeAmount;
 
+    stock.price = Math.max(0, stock.price);
+    console.log(stock.price);
+  }, 1000); 
+}
 
-        //Part 3
-        const sumAll = (...numbers) => {
-            let sum = 0;
-            for (let number of numbers) {
-                sum += number;
-            }
-            return sum;
-        };
-
-        console.log(sumAll(1, 2, 3, 4));
+simulateStockUpdates(stocks);
 
 
-        //Part 4
+//Part 3
+function filterBySector(stocks, sector) {
+  const filteredStocks = stocks.filter(s => s.sector === sector);
+
+  console.log(sector);
+  filteredStocks.forEach(stock => {
+    console.log(stock.symbol);
+    console.log(stock.price);
+  });
+
+  return filteredStocks;
+}
+
+filterBySector(stocks, 'Test3'); // This will log all stocks in the 'Technology' sector
 
 
-        const fourth = () => {
-            console.log('Start');
-            console.log('End');
-        };
+function alertSystem(stocks) {
+  const upperLimit = 300.00; // Set the upper price limit
+const lowerLimit = 100.00;
+  function checkPrices() {
+    stocks.forEach(stock => {
+      if (stock.price > upperLimit) {
+        console.log(stock.symbol);
+    console.log(stock.price);
+      } else if (stock.price < lowerLimit) {
+        console.log(stock.symbol);
+    console.log(stock.price);
+      }
+    });
 
-        const third = () => {
-            console.log('Start');
-            fourth();
-            console.log('End');
-        };
+    // Schedule the next check
+    setTimeout(checkPrices, 3000); // check every 3000 milliseconds (3 seconds)
+  }
 
-        const second = () => {
-            console.log('Start');
-            third();
-            console.log('End');
-        };
+  // Initial call to start the process
+  checkPrices();
+}
 
-        const first = () => {
-            console.log('Start');
-            second();
-            console.log('End');
-        };
-
-        first(); // This initiates the chain of calls
-
+// Example usage:
+ // Set the lower price limit
+// Assuming `stocks` is an array of stock objects as created earlier
+alertSystem(stocks);
 
     </script>
 </body>
