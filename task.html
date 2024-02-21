@@ -45,6 +45,14 @@
     let plainPosition = text.search('plain');
     console.log(plainPosition);
 
+
+    //Validations
+    let phoneRegex = /^\d{10}$/;
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let ageRegex = /^(0?[1-9]|[1-9][0-9])$/;
+    let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+
   </script>
 </body>
 
