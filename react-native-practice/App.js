@@ -1,52 +1,40 @@
 import React, { useState } from 'react';
-import { StatusBar, Button, StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import { StyleSheet, View, Image, Button, ActivityIndicator } from 'react-native';
 
 export default function App() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch('https://recruitment-api.pyt1.stg.jmr.pl/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          login: username,
-          password: password
-        })
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setMessage(data.message);
-      } else {
-        throw new Error(data.message);
-      }
-    } catch (error) {
-      Alert.alert('Error', error.message);
-    }
+  const [imageURL, setImageURL] = useState("");
+  const [loader, setLoader] = useState(false);
+
+  const handleButtonPress = (url) => {
+    setLoader(true);
+    setImageURL(url);
+    setLoader(false);
   };
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        onChangeText={text => setUsername(text)}
-        value={username}
+      <Button
+        style={styles.button}
+        title="Test 1"
+        onPress={() => handleButtonPress("https://paperandinkprinting.com/wp-content/uploads/2019/08/canstockphoto22402523-arcos-creator.com_-1024x1024.jpg")}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        onChangeText={text => setPassword(text)}
-        value={password}
-        secureTextEntry={true}
+      <Button
+        style={styles.button}
+        title="Test 2"
+        onPress={() => handleButtonPress("https://abtechsolutions.ca/wp-content/uploads/2019/02/Test.png")}
       />
-      <Button title="Login" onPress={handleLogin} />
-      <Text>{message}</Text>
-      <StatusBar style="auto" />
+      <Button
+        style={styles.button}
+        title="Test 3"
+        onPress={() => handleButtonPress("https://cdn-icons-png.freepik.com/512/4838/4838856.png")}
+      />
+
+      {loader ? (
+        <ActivityIndicator size="large" color="#0000ff" />
+      ) : (
+        <Image style={styles.tinyLogo} source={{ uri: imageURL }} />
+      )}
     </View>
   );
 }
@@ -57,11 +45,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  input: {
-    width: '80%',
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+  tinyLogo: {
+    width: 50,
+    height: 50,
   },
 });
